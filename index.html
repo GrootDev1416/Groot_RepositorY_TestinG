@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Data to Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Add Data to Table</h2>
+
+        <form id="dataForm">
+            <label for="nanoID">Nano ID:</label><br>
+            <input type="number" id="nanoID" name="nanoID"><br>
+            <label for="termName">Terminal Name:</label><br>
+            <input type="text" id="termName" name="termName"><br>
+            <label for="termMac">Terminal Mac:</label><br>
+            <input type="text" name="termMac" id="termMac"><br>
+            <label for="termIP">Terminal IP:</label><br>
+            <input type="text" name="termIP" id="termIP"><br>
+            <button type="button" onclick="addData()">Add Data</button>
+        </form>
+
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Nano ID</th>
+                    <th>Terminal Name</th>
+                    <th>Terminal Mac</th>
+                    <th>Terminal IP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function addData() {
+            var Nano_ID = document.getElementById("nanoID").value;
+            var term_Name = document.getElementById("termName").value;
+            var term_Mac = document.getElementById("termMac").value;
+            var term_IP = document.getElementById("termIP").value;
+
+            var table = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+            var nanoID = newRow.insertCell(0);
+            var termName = newRow.insertCell(1);
+            var termMac = newRow.insertCell(2);
+            var termIP = newRow.insertCell(3);
+
+            nanoID.innerHTML = Nano_ID;
+            termName.innerHTML = term_Name;
+            termMac.innerHTML = term_Mac;
+            termIP.innerHTML = term_IP;
+
+            // Clear input fields
+            document.getElementById("nanoId").value = "";
+            document.getElementById("termName").value = "";
+            document.getElementById("termMac").value = "";
+            document.getElementById("termIP").value = "";
+        }
+    </script>
+
+</body>
+
+</html>
