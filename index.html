@@ -101,6 +101,8 @@
             <button type="button" onclick="addData()">Add Data</button>
         </form>
 
+        <div class="record-count" id="recordCount"></div>
+
         <table id="dataTable">
             <thead>
                 <tr>
@@ -118,6 +120,7 @@
 
     <script>
         function addData() {
+            // document.addEventListener("DOMContentLoaded", function () {
             var Nano_ID = document.getElementById("nanoID").value;
             var term_Name = document.getElementById("termName").value;
             var term_Mac = document.getElementById("termMac").value;
@@ -140,7 +143,18 @@
             document.getElementById("termName").value = "";
             document.getElementById("termMac").value = "";
             document.getElementById("termIP").value = "";
+            updateRecordCount();
+            // });
         }
+
+        function updateRecordCount() {
+            var rowCount = document.getElementById("dataTable").getElementsByTagName('tbody')[0].rows.length;
+            document.getElementById("recordCount").innerHTML = "No of records: " + rowCount;
+        }
+
+        // Initial record count
+        updateRecordCount();
+
     </script>
 
 </body>
